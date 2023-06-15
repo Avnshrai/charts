@@ -80,8 +80,8 @@ alertmanager:
   enabled: true
   image:
     registry: docker.io
-    repository: bitnami/alertmanager
-    tag: 0.25.0-debian-11-r54
+    repository: siddharth387/alertmanager-packer
+    tag: v1
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -98,7 +98,7 @@ alertmanager:
     pullSecrets: []
 
   ## @param alertmanager.configuration [string] Alertmanager configuration. This content will be stored in the the alertmanager.yaml file and the content can be a template.
-  ## ref: <https://github.com/prometheus-community/helm-charts/blob/8f2743ed3a9c93c56978a95b62a63e84c52f5748/charts/alertmanager/values.yaml#L171-L188>
+  ## ref: <https://github.com/prometheus-community/helm-charts/blob/8f2743ed3a9c93c56978a95b62a63e84c52f5748/charts/alertmanager/values.yaml#L171-L188>
   ##
   configuration: |
     receivers:
@@ -576,8 +576,8 @@ alertmanager:
 server:
   image:
     registry: docker.io
-    repository: bitnami/prometheus
-    tag: 2.44.0-debian-11-r7
+    repository: siddharth387/prom
+    tag: v1
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -594,7 +594,7 @@ server:
     pullSecrets: []
 
   ## @param server.configuration [string] Promethus configuration. This content will be stored in the the prometheus.yaml file and the content can be a template.
-  ## ref: <https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml>
+  ## ref: <https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml>
   ##
   configuration: |
     global:
@@ -640,11 +640,11 @@ server:
 
 
   ## @param server.alertingRules Prometheus alerting rules. This content will be stored in the the rules.yaml file and the content can be a template.
-  ## ref: <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>
+  ## ref: <https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/>
   ##
   alertingRules: {}
   ## @param server.extraScrapeConfigs Promethus configuration, useful to declare new scrape_configs. This content will be merged with the 'server.configuration' value and stored in the the prometheus.yaml file.
-  ## ref: <https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config>
+  ## ref: <https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config>
   ##
   extraScrapeConfigs: []
   ## @param server.replicaCount Number of Prometheus replicas to deploy
@@ -882,7 +882,7 @@ server:
   ##
   initContainers: []
   ## @param server.routePrefix Prefix for the internal routes of web endpoints
-  ## 
+  ## 
   routePrefix: /
   ## @param server.remoteWrite The remote_write spec configuration for Prometheus
   ##
@@ -891,7 +891,7 @@ server:
   ##
   scrapeInterval: ""
   ## @param server.scrapeTimeout Interval between consecutive scrapes. Example: "10s"
-  ## 
+  ## 
   scrapeTimeout: ""
   ## @param server.evaluationInterval Interval between consecutive evaluations. Example: "1m"
   ##
